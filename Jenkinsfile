@@ -2,13 +2,13 @@ pipeline{
     agent any
 
     tools {
-        maven 'Maven_3.8.7'       
+        maven 'Maven_3.9.1'       
     }
 
     stages{
         stage('SCM Checkout'){
             steps{
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'Git_Token', url: 'https://github.com/getyourdurga/java-maven-war-app.git']])
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'Git_Token', url: 'https://github.com/sasi0616/java-maven-war-app.git']])
             }
             
         }
@@ -37,14 +37,14 @@ pipeline{
             }
         }
 
-        stage("deployment"){
-            agent{
-                label 'Ansible_Agent'
-            }
-            steps{
-                sh 'ansible-playbook -i inventory.yml deployment_playbook.yml -e "build_number=${BUILD_NUMBER}"'                
-            }
-        }
+        // stage("deployment"){
+        //     agent{
+        //         label 'Ansible_Agent'
+        //     }
+        //     steps{
+        //         sh 'ansible-playbook -i inventory.yml deployment_playbook.yml -e "build_number=${BUILD_NUMBER}"'                
+        //     }
+        // }
     }
 
 }
