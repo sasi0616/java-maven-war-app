@@ -1,0 +1,13 @@
+---
+- name: Playbook for deploy the war file
+  hosts: all
+  become: true
+
+    - name: download war file through url module
+      ansible.windows.win_get_url:
+        url: http://52.91.163.144:8081/repository/java-maven-app-release/com/mycompany/app/hello-world-war/1.0.0-4/hello-world-war-1.0.0-4.war
+        dest: /home/ec2-user/tomcat
+        mode: '0777'
+
+    - name: move war file to tomcat webapps
+      ansible.builtin.shell: cp /home/ec2-user/tomcat/hello-world-war-1.0.0-4.war /home/ec2-user/tomcat/apache-tomcat-9.0.74/webapps
