@@ -4,21 +4,21 @@
   become: true
   vars:
     nexus_url: http://18.208.147.36:8081/repository
-    repository_type: java-maven-app-releases
-    group_id: com%2Fmycompany%2Fapp
+    repository_type: java-maven-app-release
+    group_id: com/mycompany/app
     artifact_id: hello-world-war
     version: 1.0.0
     build_number: "{{build_number}}"
   tasks:
   - name: Download file from a file path
     ansible.builtin.get_url:
-      url: "{{nexus_url}}/{{repository_type}}/{{group_id}}%2F{{artifact_id}}%2F{{version}}-{{build_number}}%2F{{artifact_id}}-{{version}}-{{ build_number}}.war"
+      url: "{{nexus_url}}/{{repository_type}}/{{group_id}}/{{artifact_id}}/{{version}}-{{build_number}}/{{artifact_id}}-{{version}}-{{ build_number}}.war"
       dest: /home/ec2-user
       username: admin
       password: nexus
 
   - name: Rename war file
-    ansible.builtin.shell: mv /home/ec2-user/{{group_id}}%2F{{artifact_id}}%2F{{version}}-{{build_number}}%2F{{artifact_id}}-{{version}}-{{ build_number}}.war /home/ec2-user/helloworld.war
+    ansible.builtin.shell: mv /home/ec2-user/{{group_id}}/{{artifact_id}}/{{version}}-{{build_number}}%2F{{artifact_id}}-{{version}}-{{ build_number}}.war /home/ec2-user/helloworld.war
 
   - name: Deploying artifact in webapps
     ansible.builtin.shell: mv /home/ec2-user/helloworld.war /home/ec2-user/apache-tomcat-9.0.72/webapps/helloworld.war
