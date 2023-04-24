@@ -37,14 +37,14 @@ pipeline{
             }
         }
 
-        // stage("deployment"){
-        //     agent{
-        //         label 'Ansible_AgentNode'
-        //     }
-        //     steps{
-        //         sh 'ansible-playbook -i inventory.yml deployment_playbook.yml -e "build_number=${BUILD_NUMBER}"'                
-        //     }
-        // }
+        stage("deployment"){
+            agent{
+                label 'Ansible_AgentNode'
+            }
+            steps{
+                sh 'ansible-playbook -i inventory.yml deployment_playbook.yml -e "build_number=${BUILD_NUMBER}"'                
+            }
+        }
     }
 
 }
