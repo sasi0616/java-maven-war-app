@@ -8,8 +8,8 @@
 	<name>Hello World Web Application Repository</name>
 	<description>Simplest possible Java Webapp</description>
     <properties>
-        <maven.compiler.source>1.6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>
+        <maven.compiler.source>7</maven.compiler.source>
+        <maven.compiler.target>7</maven.compiler.target>
     </properties>
 
 	<build>
@@ -41,18 +41,18 @@
  <repositories>
     <repository>
       <id>java-maven-app-group</id>
-      <url>http://3.89.220.174:8081/repository/java-maven-app-group/</url>
+      <url>http://18.208.147.36:8081/repository/java-maven-app-group/</url>
     </repository>
   </repositories>
 
     <distributionManagement>
     <snapshotRepository>
       <id>java-maven-app-snapshot</id>
-      <url>http://3.89.220.174:8081/repository/java-maven-app-snapshot/</url>
+      <url>http://18.208.147.36:8081/repository/java-maven-app-snapshot/</url>
     </snapshotRepository>
     <repository>
       <id>java-maven-app-release</id>
-      <url>http://3.89.220.174:8081/repository/java-maven-app-release/</url>
+      <url>http://18.208.147.36:8081/repository/java-maven-app-release/</url>
     </repository>
   </distributionManagement>
 </project>
