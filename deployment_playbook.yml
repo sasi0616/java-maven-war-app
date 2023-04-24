@@ -17,11 +17,11 @@
       username: admin
       password: nexus
 
-  # - name: Rename war file
-  #   ansible.builtin.shell: mv /home/ec2-user/{{group_id}}/{{artifact_id}}/{{version}}-{{build_number}}/{{artifact_id}}-{{version}}-{{ build_number}}.war /home/ec2-user/helloworld.war
+  - name: Rename war file
+    ansible.builtin.shell: mv /home/ec2-user/{{artifact_id}}-{{version}}-{{ build_number}}.war /home/ec2-user/helloworld.war
 
-  # - name: Deploying artifact in webapps
-  #   ansible.builtin.shell: mv /home/ec2-user/helloworld.war /home/ec2-user/apache-tomcat-9.0.72/webapps/helloworld.war
+  - name: Deploying artifact in webapps
+    ansible.builtin.shell: mv /home/ec2-user/helloworld.war /home/ec2-user/apache-tomcat-9.0.72/webapps/helloworld.war
 
   # - name: remove the artifact
   #   ansible.builtin.shell: "rm -rf cp /home/ec2-user/helloworld.war"
